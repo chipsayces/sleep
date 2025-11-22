@@ -7,26 +7,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;700;900&display=swap" rel="stylesheet"> 
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        poster: ['"Luckiest Guy"', 'cursive'], // Font for headlines
+                        poster: ['"Luckiest Guy"', 'cursive'],
                     },
                     colors: {
-                        // Soft, Cute Palette Definitions
-                        'primary': '#f48fb1',    // Soft Rose Pink
-                        'secondary': '#a7ffeb',  // Mint Green
-                        'accent': '#ffd740',     // Gold Sparkle Yellow
-                        'hotpink': '#ff4081',    // Vibrant Hot Pink
-                        'bg-soft': '#fce4ec',    // Very pale pink/lavender background
-                        'text-dark': '#4a148c',  // Deep Purple for contrast text
-                        'lavender': '#e1bee7',   // Light Lavender
+                        'primary': '#f48fb1',
+                        'secondary': '#a7ffeb',
+                        'accent': '#ffd740',
+                        'hotpink': '#ff4081',
+                        'bg-soft': '#fce4ec',
+                        'text-dark': '#4a148c',
+                        'lavender': '#e1bee7',
                     }
                 }
             }
@@ -43,85 +41,124 @@
         });
     </script>
     <style>
-        /* --- General Body & Background --- */
         body {
-            /* Using a solid soft background color for a cleaner base */
-            background-color: theme('colors.bg-soft'); 
             font-family: 'Inter', sans-serif;
             color: theme('colors.text-dark');
         }
-        
         .container-padding {
             padding-left: 1rem;
             padding-right: 1rem;
         }
-
-        /* --- Plaid Pattern Fix for Main Content Wrapper --- */
+        /* Wide Pink Striped Background fills whole plaid-container section */
         .plaid-container {
-            background-color: theme('colors.bg-soft');
-            /* Simplified Plaid Pattern for better visibility */
-            background-image: 
-                /* Diagonal line */
-                linear-gradient(45deg, theme('colors.lavender') 25%, transparent 25%, transparent 75%, theme('colors.lavender') 75%, theme('colors.lavender')),
-                /* Inverse Diagonal line */
-                linear-gradient(135deg, theme('colors.lavender') 25%, transparent 25%, transparent 75%, theme('colors.lavender') 75%, theme('colors.lavender')),
-                /* Pink vertical/horizontal lines (lighter pink) */
-                linear-gradient(to right, theme('colors.primary') 1px, transparent 1px),
-                linear-gradient(to bottom, theme('colors.primary') 1px, transparent 1px);
-            
-            /* Smaller, visible grid pattern */
-            background-size: 15px 15px, 15px 15px, 15px 15px, 15px 15px;
-            opacity: 0.95; 
-            padding-top: 1px; 
-            min-height: 100vh; /* Ensure it covers the height */
+            position: relative;
+            background: repeating-linear-gradient(
+                120deg,
+                rgba(244,143,177,0.28) 0px,
+                rgba(244,143,177,0.28) 80px,
+                transparent 80px,
+                transparent 160px
+            );
+            padding-top: 1px;
         }
-        
-        /* Shop Hero Section Styling */
+        .plaid-container > * {
+            position: relative;
+            z-index: 1;
+        }
         .shop-hero-bg {
-            position: relative; 
-            overflow: hidden; 
+            position: relative;
+            overflow: hidden;
             border-bottom: 8px solid theme('colors.hotpink');
         }
-
-        /* Product Card specific animation and styling */
         .product-card {
-            border: 6px solid theme('colors.primary'); /* Thicker, playful border */
+            border: 6px solid theme('colors.primary');
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            /* Product cards keep their soft spotted background for contrast */
             background-color: theme('colors.bg-soft');
             background-image: radial-gradient(theme('colors.lavender') 10%, transparent 10%), 
                               radial-gradient(theme('colors.lavender') 10%, transparent 10%);
             background-size: 30px 30px;
             background-position: 0 0, 15px 15px;
+            transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
         }
-
         .product-card-hover:hover {
-            box-shadow: 0 25px 50px -12px rgba(255, 64, 129, 0.5); /* Hot pink glow */
+            box-shadow: 0 25px 50px -12px rgba(255, 64, 129, 0.5);
             transform: translateY(-8px) scale(1.02);
             border-color: theme('colors.hotpink');
         }
-
         .image-container {
             position: relative;
-            height: 200px; 
-            border: 4px solid theme('colors.accent'); 
-            /* Flex properties ensure the inline SVG/image is centered */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
+            height: 200px;
+            border: 6px solid #fd80aa;
+            border-radius: 1rem;
+            box-shadow: 0 0 0 4px #ffd74022, 0 6px 16px -6px rgba(244,143,177,0.14);
+            background: linear-gradient(135deg,rgba(255,215,64,0.10),rgba(167,255,235,0.10));
+            overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
         }
-
-        /* Style for the inline SVG in product cards */
-        .image-container svg {
+        .product-card:hover .image-container,
+        .image-container:hover {
+            border-color: #f48fb1;
+            box-shadow: 0 0 0 6px #f48fb1aa, 0 12px 32px -10px #ff408155;
+            transform: scale(1.045) rotate(-2deg);
+        }
+        .image-container img {
             width: 100%;
             height: 100%;
-            max-width: 180px; /* Limit size for visual appeal */
-            max-height: 180px;
-            transition: transform 0.3s;
+            object-fit: cover;
+            border-radius: 1rem;
+            transition: transform 0.30s cubic-bezier(.42,.6,.49,1.31), box-shadow 0.3s;
         }
-        .image-container:hover svg {
-            transform: scale(1.1);
+        .product-card:hover .image-container img,
+        .image-container:hover img {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 8px 40px -4px #f48fb122;
+        }
+        .product-actions-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            border-top: 1px solid #f48fb143;
+            padding-top: 0.75rem;
+            min-width: 0;
+        }
+        .card-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #4a148c;
+            text-shadow: 0 2px 8px #fce4ec;
+            background: linear-gradient(90deg, #ffd74011, #f48fb111);
+            border-radius: 0.75rem;
+            padding: 0.1em 0.45em;
+            flex-shrink: 0;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .add-to-cart-btn {
+            background: linear-gradient(90deg,#f48fb1,#ffd740);
+            color: #4a148c !important;
+            font-size: 1rem !important;
+            font-weight: bold;
+            box-shadow: 0 4px 12px -2px #ff4081bb;
+            border-radius: 9999px;
+            padding: 0.5em 1.1em;
+            transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+            border: 2px solid #ffd740;
+            flex-shrink: 1;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .add-to-cart-btn:hover {
+            background: linear-gradient(90deg,#ffd740,#f48fb1 88%);
+            color: #ff4081 !important;
+            border-color: #f48fb1;
+            box-shadow: 0 8px 18px -6px #ff408188;
+            transform: scale(1.07) translateY(-2px);
         }
     </style>
 </head>
@@ -137,25 +174,18 @@
                 <a href="story.html" class="hover:text-hotpink transition">Our Story</a>
                 <a href="contact.html" class="hover:text-hotpink transition">Contact Us</a>
             </nav>
-            <!-- Cart Button Size Fixed -->
             <button id="cartButton" class="bg-hotpink text-white px-5 py-2.5 rounded-full text-base font-bold shadow-lg hover:bg-pink-600 transition duration-150 transform hover:scale-105">
                 Cart (<span id="cartCount">0</span>) 🛒
             </button>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="shop-hero-bg relative text-white py-12 md:py-16 container-padding shadow-inner">
-        
-        <!-- 1. Background Image (using <img> tag) -->
-        <img src="https://placehold.co/1200x400/f48fb1/ffffff?text=Dreamy+Charm+Background" 
+        <img src="images/bg.jpg" 
              alt="Dreamy, sparkling charm background"
              class="absolute inset-0 w-full h-full object-cover z-0"
              onerror="this.onerror=null;this.src='https://placehold.co/1200x400/9e9e9e/ffffff?text=Background+Image+Error';">
-        
-        <!-- 2. Overlay -->
-        <div class="absolute inset-0 bg-primary opacity-75 z-10"></div>
-
+        <div class="absolute inset-0 bg-primary opacity-15 z-10"></div>
         <div class="max-w-7xl mx-auto text-center relative z-20">
             <h2 class="text-6xl md:text-7xl font-poster leading-tight mb-4 text-white drop-shadow-lg">
                 The Full Sparkle Collection
@@ -166,21 +196,12 @@
         </div>
     </section>
     
-    <!-- Decorative Divider -->
-    <div class="relative w-full h-12 overflow-hidden -mt-1">
-        <svg class="absolute bottom-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-            <path class="fill-hotpink/80" d="M1000,4.3V0H0v4.3c0,21.7,29.3,42.5,100,45.1c32.7,1.2,65.3-2.6,98-12.7c32.7-10.1,65.3-27.1,98-25.1c32.7,2,65.3,18,98,28.8c32.7,10.8,65.3,16,98,16s65.3-5.2,98-16c32.7-10.8,65.3-26.8,98-28.8c32.7-2,65.3,14.9,98,25.1c32.7,10.1,65.3,13.9,98,12.7c70.7-2.6,100-23.4,100-45.1z" />
-        </svg>
-    </div>
-
-    <!-- MAIN CONTENT WRAPPER WITH PLAID BACKGROUND (NOW VISIBLE) -->
+    <!-- MAIN CONTENT WRAPPER WITH STRIPES -->
     <div class="plaid-container">
         <main class="py-16 container-padding">
             <div class="max-w-7xl mx-auto">
-                
                 <!-- Filter and Sort Controls -->
                 <div class="mb-14 p-6 bg-white rounded-3xl shadow-2xl border-8 border-accent/70 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 sm:space-x-6" data-aos="zoom-in">
-                    
                     <div class="w-full sm:w-auto">
                         <label for="categoryFilter" class="block text-xl font-bold mb-2 text-hotpink">Filter by Category:</label>
                         <select id="categoryFilter" class="p-4 w-full sm:w-56 rounded-xl border-3 border-primary focus:ring-hotpink focus:border-hotpink shadow-inner text-lg font-semibold">
@@ -193,7 +214,6 @@
                             <option value="Luxury">Premium Charms</option>
                         </select>
                     </div>
-
                     <div class="w-full sm:w-auto">
                         <label for="priceSort" class="block text-xl font-bold mb-2 text-hotpink">Sort by Price:</label>
                         <select id="priceSort" class="p-4 w-full sm:w-56 rounded-xl border-3 border-primary focus:ring-hotpink focus:border-hotpink shadow-inner text-lg font-semibold">
@@ -202,18 +222,13 @@
                             <option value="highToLow">Price: High to Low</option>
                         </select>
                     </div>
-
-                    <!-- Reset Button Size Fixed -->
                     <button id="resetButton" class="bg-secondary text-text-dark px-6 py-3 rounded-full font-bold shadow-lg hover:bg-secondary/80 transition duration-150 transform hover:scale-105 w-full sm:w-auto text-lg uppercase">
                         Reset Sparkle
                     </button>
                 </div>
-
-                <!-- Product Grid - Increased transition to duration-500 and added ease-in-out for smoothness -->
                 <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 transition-opacity duration-500 ease-in-out">
                     <!-- Products will be injected here by JavaScript -->
                 </div>
-                
                 <p id="noProducts" class="text-center text-4xl font-poster text-primary mt-20 hidden">
                     Oops! No charms found in this category. Try another sparkle! ✨
                 </p>
@@ -236,187 +251,149 @@
     </footer>
 
     <script>
-        // --- Product Data (Using inline SVG for images) ---
-        // Note: The imageUrl property now contains complete inline SVG code (XML) instead of a URL string.
-        const products = [
-            { id: 'S1', name: 'Cosmic Unicorn', description: 'Sparkly rainbow beads and unicorn charms.', price: 38.50, category: 'Fantasy', colorClass: 'from-purple-400 to-hotpink', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" fill="#f48fb1"/><path d="M50 5 L55 35 L45 35 Z" fill="#fff" stroke="#ffd740" stroke-width="2"/><path d="M50 50 C 70 20, 90 80, 50 95 C 10 80, 30 20, 50 50 Z" fill="#ff4081" opacity="0.6"/><text x="50" y="55" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle">🦄</text></svg>`
-            },
-            { id: 'S2', name: 'Ocean Tides', description: 'Deep blue and teal beads with seashell charms.', price: 32.00, category: 'Nature', colorClass: 'from-blue-400 to-secondary', 
-              // Example SVG for Ocean Tides
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#a7ffeb"/><path d="M0 50 Q 25 30, 50 50 T 100 50" stroke="#00bcd4" stroke-width="5" fill="none"/><circle cx="80" cy="65" r="10" fill="#fff" stroke="#00bcd4" stroke-width="2"/><path d="M20 75 Q 30 60, 40 75 T 60 75" fill="#00bcd4" opacity="0.4"/></svg>`
-            }, 
-            { id: 'S3', name: 'Strawberry Shortcake', description: 'Pink and red charms with a fruity twist.', price: 29.99, category: 'Food', colorClass: 'from-hotpink to-red-400', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#ff4081"/><circle cx="50" cy="50" r="30" fill="#e53935"/><circle cx="40" cy="40" r="4" fill="#fff"/><circle cx="60" cy="60" r="4" fill="#fff"/><text x="50" y="55" font-family="Arial" font-size="16" fill="#fff" text-anchor="middle">🍓</text></svg>`
-            },
-            { id: 'S4', name: 'Tiny Dino Land', description: 'Green and brown beads with tiny dinosaur charms.', price: 34.99, category: 'Fantasy', colorClass: 'from-green-400 to-yellow-500', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#9e9e9e"/><path d="M20 80 L 30 60 L 50 70 L 70 50 L 80 80 Z" fill="#4caf50"/><text x="50" y="45" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle">🦖</text></svg>`
-            },
-            { id: 'S5', name: 'Lucky Clover', description: 'Simple green design with good luck charms.', price: 25.00, category: 'Nature', colorClass: 'from-secondary to-green-600', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#a7ffeb"/><circle cx="50" cy="50" r="30" fill="#4caf50"/><path d="M50 20 L 70 35 L 50 50 Z" fill="#8bc34a"/><path d="M50 80 L 70 65 L 50 50 Z" fill="#8bc34a"/></svg>`
-            },
-            { id: 'S6', name: 'Pastel Dreams', description: 'Soft pink, blue, and yellow mix with cloud charms.', price: 42.00, category: 'Everyday', colorClass: 'from-primary to-blue-300', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#f48fb1"/><circle cx="30" cy="70" r="15" fill="#fff"/><circle cx="70" cy="60" r="20" fill="#fff"/><circle cx="55" cy="45" r="12" fill="#fff"/><text x="50" y="55" font-family="Arial" font-size="12" fill="#000" text-anchor="middle">☁️</text></svg>`
-            },
-            { id: 'S7', name: 'Gamer Pixel', description: 'Black and neon charms for the ultimate player.', price: 31.00, category: 'Tech', colorClass: 'from-gray-800 to-hotpink', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#212121"/><rect x="25" y="25" width="50" height="50" fill="#a7ffeb"/><path d="M30 50 L 70 50 M50 30 L 50 70" stroke="#ff4081" stroke-width="4" stroke-linecap="round"/><text x="50" y="55" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle">👾</text></svg>`
-            },
-            { id: 'S8', name: 'Zodiac Star', description: 'Personalized charm with a constellation theme.', price: 49.99, category: 'Luxury', colorClass: 'from-text-dark to-accent', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#4a148c"/><circle cx="50" cy="50" r="45" fill="url(#star-gradient)"/><defs><radialGradient id="star-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"><stop offset="0%" style="stop-color:#ffd740"/><stop offset="100%" style="stop-color:#ff4081"/></radialGradient></defs><path d="M50,10 L60,40 L90,40 L65,60 L75,90 L50,70 L25,90 L35,60 L10,40 L40,40 Z" fill="#fff"/></svg>`
-            },
-            { id: 'S9', name: 'Little Ladybug', description: 'Red and black beads with cute insect charms.', price: 28.00, category: 'Nature', colorClass: 'from-red-500 to-white', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#f44336"/><circle cx="50" cy="50" r="35" fill="#b71c1c"/><circle cx="50" cy="50" r="30" fill="#e57373"/><circle cx="50" cy="50" r="25" fill="#f44336"/><circle cx="50" cy="30" r="5" fill="#000"/><circle cx="30" cy="50" r="5" fill="#000"/><circle cx="70" cy="50" r="5" fill="#000"/></svg>`
-            },
-            { id: 'S10', name: 'Sunshine Day', description: 'Bright yellow and orange beads for happy days.', price: 27.50, category: 'Everyday', colorClass: 'from-accent to-orange-400', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="#ffd740"/><circle cx="50" cy="50" r="30" fill="#ffa726"/><text x="50" y="55" font-family="Arial" font-size="12" fill="#4a148c" text-anchor="middle">☀️</text></svg>`
-            },
-            { id: 'S11', name: 'Magic Potion', description: 'Lavender and mint gradient with mystical bottle charms.', price: 39.00, category: 'Fantasy', colorClass: 'from-purple-300 to-secondary', 
-              imageUrl: `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#e1bee7"/><path d="M40 20 Q 60 20, 60 40 L 60 80 Q 60 90, 50 90 Q 40 90, 40 80 L 40 40 Q 40 20, 60 20 Z" fill="#a7ffeb" stroke="#4a148c" stroke-width="2"/><circle cx="50" cy="30" r="5" fill="#4a148c"/></svg>`
-            },
-        ];
-
-        // Global State
-        let cartItems = 0;
-        
-        // DOM Elements
-        const cartCountElement = document.getElementById('cartCount');
-        const productGrid = document.getElementById('productGrid');
-        const categoryFilter = document.getElementById('categoryFilter');
-        const priceSort = document.getElementById('priceSort');
-        const noProductsMessage = document.getElementById('noProducts');
-        const resetButton = document.getElementById('resetButton');
-
-
-        // Helper function to show a friendly, custom alert 
-        function alertUser(message) {
-            const existingAlert = document.getElementById('custom-alert');
-            if (existingAlert) { existingAlert.remove(); } 
-
-            const alertDiv = document.createElement('div');
-            alertDiv.id = 'custom-alert';
-            alertDiv.className = 'fixed top-6 left-1/2 transform -translate-x-1/2 bg-hotpink text-white px-8 py-4 rounded-full shadow-2xl z-[9999] opacity-0 transition-opacity duration-500 ease-out font-poster text-xl text-center border-4 border-white';
-            alertDiv.textContent = message;
-            
-            document.body.appendChild(alertDiv);
-            
-            // Show the alert 
-            setTimeout(() => {
-                alertDiv.style.opacity = '1';
-            }, 10);
-            // Hide and remove the alert after 3 seconds
-            setTimeout(() => {
-                alertDiv.style.opacity = '0';
-                setTimeout(() => alertDiv.remove(), 500);
-            }, 3000);
+    const products = [
+        { id: 'S1', name: 'Cosmic Unicorn', description: 'Sparkly rainbow beads and unicorn charms.', price: 38.50, category: 'Fantasy', colorClass: '', 
+            imageUrl: "images/uni.jpg"
+        },
+        { id: 'S2', name: 'Ocean Tides', description: 'Deep blue and teal beads with seashell charms.', price: 32.00, category: 'Nature', colorClass: '',
+            imageUrl: "images/ocean.jpg"
+        },
+        { id: 'S3', name: 'Strawberry Shortcake', description: 'Pink and red charms with a fruity twist.', price: 29.99, category: 'Food', colorClass: '',
+            imageUrl: "images/straw.jpg"
+        },
+        { id: 'S4', name: 'Tiny Dino Land', description: 'Green and brown beads with tiny dinosaur charms.', price: 34.99, category: 'Fantasy', colorClass: '',
+            imageUrl: "images/dino.jpg"
+        },
+        { id: 'S5', name: 'Lucky Clover', description: 'Simple green design with good luck charms.', price: 25.00, category: 'Nature', colorClass: '',
+            imageUrl: "images/clover.jpg"
+        },
+        { id: 'S6', name: 'Pastel Dreams', description: 'Soft pink, blue, and yellow mix with cloud charms.', price: 42.00, category: 'Everyday', colorClass: '',
+            imageUrl: "images/cloud.jpg"
+        },
+        { id: 'S7', name: 'Gamer Pixel', description: 'Black and neon charms for the ultimate player.', price: 31.00, category: 'Tech', colorClass: '',
+            imageUrl: "images/pixel.jpg"
+        },
+        { id: 'S8', name: 'Zodiac Star', description: 'Personalized charm with a constellation theme.', price: 49.99, category: 'Luxury', colorClass: '',
+            imageUrl: "images/const.jpg"
+        },
+        { id: 'S9', name: 'Little Ladybug', description: 'Red and black beads with cute insect charms.', price: 28.00, category: 'Nature', colorClass: '',
+            imageUrl: "images/lady.jpg"
+        },
+        { id: 'S10', name: 'Sunshine Day', description: 'Bright yellow and orange beads for happy days.', price: 27.50, category: 'Everyday', colorClass: '',
+            imageUrl: "images/sun.jpg"
+        },
+        { id: 'S11', name: 'Magic Potion', description: 'Lavender and mint gradient with mystical bottle charms.', price: 39.00, category: 'Fantasy', colorClass: '',
+            imageUrl: "images/potion.jpg"
         }
+    ];
 
-        // Add to Cart Logic
-        function addToCart(productId, productName) {
-            cartItems++;
-            cartCountElement.textContent = cartItems;
-            alertUser(`"${productName}" added to cart! Total items: ${cartItems} 🛍️`);
+    let cartItems = 0;
+    const cartCountElement = document.getElementById('cartCount');
+    const productGrid = document.getElementById('productGrid');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const priceSort = document.getElementById('priceSort');
+    const noProductsMessage = document.getElementById('noProducts');
+    const resetButton = document.getElementById('resetButton');
+
+    function alertUser(message) {
+        const existingAlert = document.getElementById('custom-alert');
+        if (existingAlert) { existingAlert.remove(); }
+        const alertDiv = document.createElement('div');
+        alertDiv.id = 'custom-alert';
+        alertDiv.className = 'fixed top-6 left-1/2 transform -translate-x-1/2 bg-hotpink text-white px-8 py-4 rounded-full shadow-2xl z-[9999] opacity-0 transition-opacity duration-500 ease-out font-poster text-xl text-center border-4 border-white';
+        alertDiv.textContent = message;
+        document.body.appendChild(alertDiv);
+        setTimeout(() => {
+            alertDiv.style.opacity = '1';
+        }, 10);
+        setTimeout(() => {
+            alertDiv.style.opacity = '0';
+            setTimeout(() => alertDiv.remove(), 500);
+        }, 3000);
+    }
+
+    function addToCart(productId, productName) {
+        cartItems++;
+        cartCountElement.textContent = cartItems;
+        alertUser(`"${productName}" added to cart! Total items: ${cartItems} 🛍️`);
+    }
+
+    function renderProducts(currentProducts) {
+        productGrid.innerHTML = '';
+        if (currentProducts.length === 0) {
+            noProductsMessage.classList.remove('hidden');
+        } else {
+            noProductsMessage.classList.add('hidden');
         }
-
-        // Product Rendering Function
-        function renderProducts(currentProducts) {
-            productGrid.innerHTML = ''; // Clear existing products
-            
-            if (currentProducts.length === 0) {
-                noProductsMessage.classList.remove('hidden');
-            } else {
-                noProductsMessage.classList.add('hidden');
-            }
-
-            currentProducts.forEach((product, index) => {
-                const productCard = document.createElement('div');
-                productCard.className = 'product-card product-card-hover p-4 rounded-3xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer';
-                productCard.setAttribute('data-product-id', product.id);
-                productCard.setAttribute('data-aos', 'fade-up');
-                productCard.setAttribute('data-aos-delay', (index % 5) * 100); 
-
-                // Inject the inline SVG/Image directly into the image-container
-                productCard.innerHTML = `
-                    <div class="image-container ${product.colorClass} rounded-xl mb-4 overflow-hidden shadow-inner">
-                        <!-- INJECTING INLINE SVG/IMAGE HERE -->
-                        ${product.imageUrl}
-                    </div> 
-                    <h4 class="font-poster text-2xl mb-1 text-hotpink leading-tight">${product.name}</h4>
-                    <span class="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 bg-secondary rounded-full text-text-dark mb-2 shadow-sm">${product.category}</span>
-                    <p class="text-sm text-text-dark/90 h-10 overflow-hidden mb-3">${product.description}</p>
-                    <div class="flex justify-between items-center mt-4 border-t pt-3 border-primary/40">
-                        <span class="text-3xl font-extrabold text-text-dark">$${product.price.toFixed(2)}</span>
-                        <button class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-110 shadow-lg font-bold uppercase">
-                            Sparkle Up!
-                        </button>
-                    </div>
-                `;
-
-                // Add event listener directly to the button
-                productCard.querySelector('.add-to-cart-btn').addEventListener('click', (event) => {
-                    event.stopPropagation(); 
-                    addToCart(product.id, product.name);
-                });
-
-                productGrid.appendChild(productCard);
+        currentProducts.forEach((product, index) => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card product-card-hover p-4 rounded-3xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer';
+            productCard.setAttribute('data-product-id', product.id);
+            productCard.setAttribute('data-aos', 'fade-up');
+            productCard.setAttribute('data-aos-delay', (index % 5) * 100); 
+            productCard.innerHTML = `
+                <div class="image-container ${product.colorClass} rounded-xl mb-4 shadow-inner">
+                    <img 
+                        src="${product.imageUrl}" 
+                        alt="${product.name} charm bracelet"
+                        onerror="this.onerror=null;this.src='https://placehold.co/300x300/9e9e9e/ffffff?text=Image+Error';"
+                    >
+                </div>
+                <h4 class="font-poster text-2xl mb-1 text-hotpink leading-tight">${product.name}</h4>
+                <span class="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 bg-secondary rounded-full text-text-dark mb-2 shadow-sm">${product.category}</span>
+                <p class="text-sm text-text-dark/90 h-10 overflow-hidden mb-3">${product.description}</p>
+                <div class="product-actions-row">
+                    <span class="card-price">$${product.price.toFixed(2)}</span>
+                    <button class="add-to-cart-btn">Sparkle Up!</button>
+                </div>
+            `;
+            productCard.querySelector('.add-to-cart-btn').addEventListener('click', (event) => {
+                event.stopPropagation();
+                addToCart(product.id, product.name);
             });
-        }
-
-        // Filter and Sort Logic
-        function applyFiltersAndSort() {
-            let filteredProducts = [...products]; 
-            const selectedCategory = categoryFilter.value;
-            const selectedSort = priceSort.value;
-
-            // 1. Filtering
-            if (selectedCategory !== 'All') {
-                filteredProducts = filteredProducts.filter(p => p.category.includes(selectedCategory));
-            }
-
-            // 2. Sorting
-            if (selectedSort === 'lowToHigh') {
-                filteredProducts.sort((a, b) => a.price - b.price);
-            } else if (selectedSort === 'highToLow') {
-                filteredProducts.sort((a, b) => b.price - a.price);
-            }
-
-            // --- Animation Sequence for Smooth Transition ---
-            
-            if (productGrid.children.length > 0 && productGrid.classList.contains('opacity-0') === false) {
-                productGrid.classList.add('opacity-0');
-            } else {
-                renderNewContent();
-                return;
-            }
-
-            setTimeout(() => {
-                renderNewContent();
-                requestAnimationFrame(() => {
-                    productGrid.classList.remove('opacity-0');
-                });
-            }, 500); 
-
-            function renderNewContent() {
-                renderProducts(filteredProducts);
-            }
-            // --- End Animation Sequence ---
-        }
-
-        // --- Initialization ---
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // Initial product render
-            applyFiltersAndSort();
-
-            // Event Listeners for controls
-            categoryFilter.addEventListener('change', applyFiltersAndSort);
-            priceSort.addEventListener('change', applyFiltersAndSort);
-            
-            resetButton.addEventListener('click', () => {
-                categoryFilter.value = 'All';
-                priceSort.value = 'default';
-                applyFiltersAndSort();
-            });
+            productGrid.appendChild(productCard);
         });
+    }
+
+    function applyFiltersAndSort() {
+        let filteredProducts = [...products];
+        const selectedCategory = categoryFilter.value;
+        const selectedSort = priceSort.value;
+        if (selectedCategory !== 'All') {
+            filteredProducts = filteredProducts.filter(p => p.category.includes(selectedCategory));
+        }
+        if (selectedSort === 'lowToHigh') {
+            filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (selectedSort === 'highToLow') {
+            filteredProducts.sort((a, b) => b.price - a.price);
+        }
+        if (productGrid.children.length > 0 && productGrid.classList.contains('opacity-0') === false) {
+            productGrid.classList.add('opacity-0');
+        } else {
+            renderNewContent();
+            return;
+        }
+        setTimeout(() => {
+            renderNewContent();
+            requestAnimationFrame(() => {
+                productGrid.classList.remove('opacity-0');
+            });
+        }, 500);
+        function renderNewContent() {
+            renderProducts(filteredProducts);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        applyFiltersAndSort();
+        categoryFilter.addEventListener('change', applyFiltersAndSort);
+        priceSort.addEventListener('change', applyFiltersAndSort);
+        resetButton.addEventListener('click', () => {
+            categoryFilter.value = 'All';
+            priceSort.value = 'default';
+            applyFiltersAndSort();
+        });
+    });
     </script>
 </body>
 </html>
