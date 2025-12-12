@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AuroraCharm — Contact Us</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        poster: ['"Luckiest Guy"', 'cursive'], // Font for headlines
+                    },
+                    colors: {
+                        // Soft, Cute Palette Definitions
+                        'primary': '#f48fb1',    // Soft Rose Pink
+                        'secondary': '#a7ffeb',  // Mint Green
+                        'accent': '#ffd740',     // Gold Sparkle Yellow
+                        'hotpink': '#ff4081',    // Vibrant Hot Pink
+                        'bg-soft': '#fce4ec',    // Very pale pink/lavender background
+                        'text-dark': '#4a148c',  // Deep Purple for contrast text
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --hotpink: #ff4081;
+            --primary: #f48fb1;
+            --accent: #ffd740;
+            --text: #4a148c;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(180deg, #fff6fb 0%, #fff 100%);
+            color: var(--text);
+        }
+
+        .container-padding {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .hero {
+            background: linear-gradient(90deg, rgba(255, 64, 129, 0.06), rgba(255, 215, 64, 0.04));
+            border-bottom: 6px solid var(--hotpink);
+        }
+
+        .brand {
+            font-family: "Luckiest Guy", cursive;
+            color: var(--hotpink);
+        }
+
+        /* form card */
+        .card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(74, 20, 140, 0.06);
+            padding: 1.25rem;
+        }
+
+        .input {
+            width: 100%;
+            padding: .75rem 0.9rem;
+            border-radius: 12px;
+            border: 2px solid #f3e6ef;
+            background: #fff;
+        }
+
+        .input:focus {
+            outline: none;
+            box-shadow: 0 8px 36px rgba(255, 64, 129, 0.08);
+            transform: translateY(-1px);
+            border-color: var(--primary);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: var(--text);
+            font-weight: 800;
+            padding: .65rem 1rem;
+            border-radius: 999px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 30px rgba(244, 64, 145, 0.09);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 46px rgba(244, 64, 145, 0.14);
+        }
+
+        .small {
+            font-size: .95rem;
+            color: #5b2d5b;
+        }
+
+        /* toast */
+        .ac_toast {
+            position: fixed;
+            left: 50%;
+            top: 18px;
+            transform: translateX(-50%);
+            background: var(--hotpink);
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 999px;
+            box-shadow: 0 8px 30px rgba(244, 64, 145, 0.18);
+            z-index: 9999;
+            font-weight: 700;
+        }
+
+        /* contact info box */
+        .info-box {
+            background: linear-gradient(180deg, rgba(255, 215, 64, 0.06), rgba(244, 143, 177, 0.03));
+            border-radius: 14px;
+            padding: 1rem;
+            border: 1px solid rgba(244, 143, 177, 0.12);
+        }
+
+        /* responsive tweaks */
+        @media (min-width: 768px) {
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1fr 420px;
+                gap: 2rem;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-bg-soft font-sans text-text-dark">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-xl">
+        <div class="w-full flex justify-between items-center h-20 px-4">
+
+            <h1 class="text-5xl font-poster text-hotpink tracking-wider flex items-center drop-shadow-md">
+                ✨ AuroraCharm
+            </h1>
+
+            <nav class="hidden md:flex space-x-8 text-lg font-medium">
+                <a href="index.html" class="hover:text-hotpink transition">Home</a>
+                <a href="shop.html" class="hover:text-hotpink transition">Shop Bracelets</a>
+                <a href="story.html" class="hover:text-hotpink transition">Our Story</a>
+                <a href="contact.html" class="text-hotpink font-semibold">Contact Us</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button id="cartButton"
+                    class="bg-hotpink text-white px-6 py-3 rounded-full text-lg font-bold shadow-lg hover:bg-pink-600 transition duration-150 transform hover:scale-105">
+                    Cart (<span id="cartCount">0</span>) 🛒
+                </button>
+
+                <button id="logoutBtn" class="bg-hotpink text-white px-4 py-3 rounded-full text-lg font-bold shadow-lg 
+                       hover:bg-pink-600 transition duration-150 transform hover:scale-105">
+                    👤
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero py-12">
+        <div class="max-w-7xl mx-auto container-padding">
+            <div class="hero-grid">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-poster mb-2">Get in touch — we love to hear from you!! ✨</h2>
+                    <p class="text-lg small mb-6">Questions about an order, custom charm requests, wholesale or press?
+                        Send us a message and our Charm Team will reply within 24 hours.</p>
+                    <div class="flex gap-4 flex-wrap">
+                        <a href="mailto:hello@auroracharm.example" class="card info-box inline-flex items-center gap-3">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 8.5v7A2.5 2.5 0 0 0 5.5 18h13a2.5 2.5 0 0 0 2.5-2.5v-7" stroke="#f48fb1"
+                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M21 6.5L12 13 3 6.5" stroke="#ffd740" stroke-width="1.6" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <div>
+                                <div class="text-sm font-semibold">hello@auroracharm.example</div>
+                                <div class="text-xs text-gray-500">General inquiries</div>
+                            </div>
+                        </a>
+
+                        <div class="card info-box inline-flex items-center gap-3">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M22 16.92V20a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.86 19.86 0 0 1 2 4.18 2 2 0 0 1 4 2h3.09a2 2 0 0 1 2 1.72c.12 1.12.47 2.2 1.05 3.17a2 2 0 0 1-.45 2.12L8.91 11.09a14.66 14.66 0 0 0 6 6l1.09-1.09a2 2 0 0 1 2.12-.45c.97.58 2.05.93 3.17 1.05A2 2 0 0 1 22 16.92z"
+                                    stroke="#ffb86b" stroke-width="1.4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <div>
+                                <div class="text-sm font-semibold">(+1) 555-0123</div>
+                                <div class="text-xs text-gray-500">Mon–Fri, 9am–5pm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- side card with hours / quick links -->
+                <aside class="card">
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-lg">Customer Care</h4>
+                        <p class="text-sm text-gray-600">We reply Monday–Friday, within one business day. For urgent
+                            order issues, call us.</p>
+                    </div>
+                    <div class="text-sm">
+                        <div class="mb-2"><strong>Return policy:</strong> 30 days free returns</div>
+                        <div class="mb-2"><strong>Shipping:</strong> Free over $40</div>
+                        <a href="faq.html" class="text-[#ff4081] font-semibold">Visit FAQs</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM + MAP -->
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto container-padding">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Form -->
+                <div class="card">
+                    <h3 class="text-2xl font-semibold mb-3">Send us a message</h3>
+                    <p class="text-sm text-gray-600 mb-4">Tell us about your question and provide an email so we can
+                        reply.</p>
+
+                    <form id="contactForm" class="space-y-4" novalidate>
+                        <!-- honeypot for bots -->
+                        <input type="text" name="hp_field" id="hp_field" style="display:none" autocomplete="off"
+                            tabindex="-1">
+
+                        <div>
+                            <label for="name" class="text-sm font-medium">Your name</label>
+                            <input id="name" name="name" class="input mt-1" type="text" placeholder="e.g. Aurora Fan"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="email" class="text-sm font-medium">Email</label>
+                            <input id="email" name="email" class="input mt-1" type="email" placeholder="you@example.com"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="text-sm font-medium">Subject</label>
+                            <select id="subject" name="subject" class="input mt-1">
+                                <option>Order help</option>
+                                <option>Custom charms</option>
+                                <option>Wholesale</option>
+                                <option>Press</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="order" class="text-sm font-medium">Order # (optional)</label>
+                            <input id="order" name="order" class="input mt-1" type="text"
+                                placeholder="Order number if applicable">
+                        </div>
+
+                        <div>
+                            <label for="message" class="text-sm font-medium">Message</label>
+                            <textarea id="message" name="message" rows="6" class="input mt-1"
+                                placeholder="Write your message..." required></textarea>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <label class="flex items-center gap-2 text-sm">
+                                <input type="checkbox" id="subscribe" name="subscribe" class="h-4 w-4">
+                                <span>Subscribe to newsletter (VIP perks)</span>
+                            </label>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <button type="submit" class="btn-primary">Send message</button>
+                            <button type="button" id="clearBtn"
+                                class="text-sm text-gray-500 hover:underline">Clear</button>
+                        </div>
+
+                        <p id="formNote" class="text-sm text-gray-500 mt-2">We'll email you a copy of this message for
+                            your records.</p>
+                    </form>
+                </div>
+
+                <!-- Map / contact details -->
+                <div class="space-y-6">
+                    <div class="card info-box">
+                        <h4 class="font-semibold text-lg mb-2">Visit our studio</h4>
+                        <p class="text-sm text-gray-600 mb-3">AuroraCharm HQ<br>123 Sparkle Lane, Suite 7<br>Imagine
+                            City, IC 90001</p>
+                        <!-- lightweight embeddable map (replace src with your own map if needed) -->
+                        <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)">
+                            <iframe title="AuroraCharm location"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=-0.1280%2C51.5070%2C-0.1270%2C51.5080&amp;layer=mapnik"
+                                style="width:100%;height:220px;border:0;" loading="lazy"></iframe>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h4 class="font-semibold text-lg mb-2">Other ways to reach us</h4>
+                        <ul class="text-sm space-y-3">
+                            <li><strong>Email:</strong> <a href="mailto:hello@auroracharm.example"
+                                    class="text-[#ff4081]">hello@auroracharm.example</a></li>
+                            <li><strong>Phone:</strong> (+1) 555-0123 — Mon–Fri 9am–5pm</li>
+                            <li><strong>Live chat:</strong> Use the chat icon at bottom-right of the site</li>
+                            <li><strong>Social:</strong> <a href="#" class="text-[#ff4081]">Instagram</a> • <a href="#"
+                                    class="text-[#ff4081]">TikTok</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h4 class="font-semibold text-lg mb-2">Support hours</h4>
+                        <p class="text-sm">Mon–Fri: 9:00 — 17:00 (UTC-5)<br>Sat–Sun: Closed (limited email support)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-10 mt-16">
+        <div class="max-w-7xl mx-auto text-center container-padding">
+            <h3 class="text-4xl font-poster text-accent mb-4 drop-shadow-md">AuroraCharm</h3>
+            <p class="text-gray-300">&copy; 2025 AuroraCharm. Where every wrist tells a story. Find your sparkle today!
+            </p>
+            <div class="mt-4 text-base text-gray-400 space-x-6">
+                <a href="policy.html" class="hover:text-hotpink transition duration-150 font-semibold">Privacy
+                    Policy</a>
+                <span class="text-gray-600">|</span>
+                <a href="tos.html" class="hover:text-hotpink transition duration-150 font-semibold">Terms of Service</a>
+                <span class="text-gray-600">|</span>
+                <a href="faq.html" class="hover:text-hotpink transition duration-150 font-semibold">FAQs</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="logoutModal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+        style="display:none;position:fixed;inset:0;z-index:60;align-items:center;justify-content:center;">
+        <div class="backdrop" style="position:absolute;inset:0;background:rgba(10,10,10,0.5);" data-dismiss="modal">
+        </div>
+        <div class="panel"
+            style="position:relative;z-index:2;background:#fff;padding:1.25rem;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,0.25);width:90%;max-width:420px;text-align:center;">
+            <h3 id="logoutTitle" style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem;color:#1f1f1f;">Sign
+                out
+                of AuroraCharm (╥﹏╥)?</h3>
+            <p style="color:#4b5563;font-size:.95rem;margin-bottom:1rem;">You will be returned to the sign-in page..
+                Your
+                cart will remain saved locally unless you clear it.</p>
+            <div style="display:flex;gap:.5rem;justify-content:center;">
+                <button id="logoutCancel" class="cancel"
+                    style="padding:.5rem 1rem;border-radius:999px;background:#f3f4f6;border:none;">Cancel</button>
+                <button id="logoutConfirm" class="confirm"
+                    style="padding:.5rem 1rem;border-radius:999px;background:linear-gradient(90deg,#ff6f9a,#ffd740);color:#4a148c;border:none;font-weight:700;">Sign
+                    out</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Toggle modal helpers
+        const logoutBtn = document.getElementById('logoutBtn');
+        const logoutModal = document.getElementById('logoutModal');
+        const logoutCancel = document.getElementById('logoutCancel');
+        const logoutConfirm = document.getElementById('logoutConfirm');
+
+        function openLogoutModal() {
+            if (!logoutModal) return;
+            logoutModal.style.display = 'flex';
+            // focus confirm for accessibility
+            logoutConfirm && logoutConfirm.focus();
+        }
+        function closeLogoutModal() {
+            if (!logoutModal) return;
+            logoutModal.style.display = 'none';
+        }
+
+        // show logout button if user is signed in
+        (function showLogoutIfSigned() {
+            try {
+                const u = localStorage.getItem('auroracharm_user');
+                if (u) {
+                    const btn = document.getElementById('logoutBtn');
+                    if (btn) btn.classList.remove('hidden');
+                }
+            } catch (e) { /* ignore */ }
+        })();
+
+        // Attach listeners (guard for pages without the elements)
+        if (logoutBtn) logoutBtn.addEventListener('click', openLogoutModal);
+        if (logoutCancel) logoutCancel.addEventListener('click', closeLogoutModal);
+        const backdrop = logoutModal && logoutModal.querySelector('.backdrop');
+        if (backdrop) backdrop.addEventListener('click', closeLogoutModal);
+
+        // Confirm logout: clear session and redirect to auth/sign-in page
+        if (logoutConfirm) logoutConfirm.addEventListener('click', () => {
+            try {
+                // Remove the session flag
+                localStorage.removeItem('auroracharm_user');
+
+                // OPTIONAL: clear per-browser cart (uncomment if desired)
+                // localStorage.removeItem('auroracharm_cart_count');
+                // localStorage.removeItem('auroracharm_cart');
+
+                // small UX toast can go here if you have one; then redirect
+            } catch (e) {
+                // ignore
+            } finally {
+                // Close modal then redirect
+                closeLogoutModal();
+                // short delay so user sees modal closing
+                setTimeout(() => { window.location.href = 'auth.html'; }, 200);
+            }
+        });
+
+        // accessibility: close modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && logoutModal && logoutModal.style.display === 'flex') {
+                closeLogoutModal();
+            }
+        });
+
+        // Simple client-side "send" handler (demo only).
+        // Stores messages to localStorage under 'auroracharm_messages' and shows a toast.
+        (function () {
+            const form = document.getElementById('contactForm');
+            const toastId = 'ac_toast';
+            const showToast = (msg) => {
+                const existing = document.getElementById(toastId);
+                if (existing) existing.remove();
+                const d = document.createElement('div');
+                d.id = toastId;
+                d.className = 'ac_toast';
+                d.textContent = msg;
+                document.body.appendChild(d);
+                setTimeout(() => d.style.opacity = '1', 10);
+                setTimeout(() => { d.style.opacity = '0'; setTimeout(() => d.remove(), 300); }, 3000);
+            };
+
+            function saveMessage(payload) {
+                try {
+                    const raw = localStorage.getItem('auroracharm_messages') || '[]';
+                    const arr = JSON.parse(raw);
+                    arr.unshift(payload);
+                    localStorage.setItem('auroracharm_messages', JSON.stringify(arr));
+                } catch (e) {
+                    console.warn('Could not save message', e);
+                }
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // simple honeypot bot check
+                const hp = document.getElementById('hp_field').value;
+                if (hp && hp.trim() !== '') {
+                    // silently ignore
+                    showToast('Message received. Thank you!');
+                    form.reset();
+                    return;
+                }
+
+                // gather
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value;
+                const order = document.getElementById('order').value.trim();
+                const message = document.getElementById('message').value.trim();
+                const subscribe = document.getElementById('subscribe').checked;
+
+                if (!name || !email || !message) {
+                    showToast('Please fill name, email, and message.');
+                    return;
+                }
+
+                const payload = {
+                    name, email, subject, order, message, subscribe,
+                    created_at: new Date().toISOString()
+                };
+
+                // Save locally (demo). Replace this with API call to your backend/email provider.
+                saveMessage(payload);
+
+                // friendly UX
+                showToast('Message sent! We will reply to your email shortly ✨');
+                form.reset();
+
+                // optionally, open mail client (commented out)
+                // window.location.href = `mailto:hello@auroracharm.example?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message + '\n\nOrder: ' + order)}`;
+            });
+
+            // clear form
+            document.getElementById('clearBtn').addEventListener('click', () => form.reset());
+
+            // Prefill email from logged-in user if available (auth demo)
+            try {
+                const u = localStorage.getItem('auroracharm_user');
+                if (u) {
+                    const user = JSON.parse(u);
+                    if (user && user.email) document.getElementById('email').value = user.email;
+                    if (user && (user.username || user.name)) document.getElementById('name').value = user.username || user.name;
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuroraCharm | Find Your Sparkle</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;700;900&display=swap" rel="stylesheet"> 
-    
+
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -34,10 +36,10 @@
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             AOS.init({
-                duration: 1000, 
-                once: true,     
+                duration: 1000,
+                once: true,
             });
         });
     </script>
@@ -45,14 +47,14 @@
         /* --- General Body & Background --- */
         body {
             /* Cute Background Image - REPLACE URL WITH YOUR IMAGE */
-            background-image: url('https://w.wallhaven.cc/full/wq/wallhaven-wqxepm.png'); 
+            background-image: url('https://w.wallhaven.cc/full/wq/wallhaven-wqxepm.png');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
             font-family: 'Inter', sans-serif;
             color: theme('colors.text-dark');
         }
-        
+
         .container-padding {
             padding-left: 1rem;
             padding-right: 1rem;
@@ -61,8 +63,8 @@
         /* Hero Section Styling (unchanged) */
         .hero-poster-bg {
             background-color: #fce4ec;
-            background-image: 
-                url('images/bg2.jpg'); 
+            background-image:
+                url('images/bg2.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -71,16 +73,20 @@
             border-top: 8px solid theme('colors.accent');
         }
 
-        .hero-poster-bg::before, .hero-poster-bg::after {
+        .hero-poster-bg::before,
+        .hero-poster-bg::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
         }
 
         .hero-poster-bg::before {
             background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
-                        radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+                radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
             background-size: 15px 15px;
             opacity: 0.8;
         }
@@ -90,59 +96,72 @@
             z-index: 2;
         }
 
-        .hero-poster-bg > div {
+        .hero-poster-bg>div {
             position: relative;
             z-index: 3;
         }
-        
+
         /* REINTRODUCED: Custom Plaid Background Pattern (Sections 1 & 3) */
         .plaid-bg {
             background-color: theme('colors.bg-soft');
-            background-image: linear-gradient(0deg, transparent 49%, rgba(255, 255, 255, 0.4) 50%, transparent 51%), 
-                              linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.4) 50%, transparent 51%), 
-                              linear-gradient(45deg, rgba(244, 143, 177, 0.2) 25%, transparent 25%), 
-                              linear-gradient(-45deg, rgba(244, 143, 177, 0.2) 25%, transparent 25%);
+            background-image: linear-gradient(0deg, transparent 49%, rgba(255, 255, 255, 0.4) 50%, transparent 51%),
+                linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.4) 50%, transparent 51%),
+                linear-gradient(45deg, rgba(244, 143, 177, 0.2) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(244, 143, 177, 0.2) 25%, transparent 25%);
             background-size: 20px 20px;
-            opacity: 0.9; 
+            opacity: 0.9;
         }
 
         /* NEW/REINTRODUCED: Custom Stripe Background Pattern (Section 4) */
         .stripe-bg {
             /* Alternating Mint Green and Pale Pink diagonal stripes */
             background-color: theme('colors.secondary');
-            background-image: repeating-linear-gradient(
-                -45deg, 
-                theme('colors.secondary') 0, 
-                theme('colors.secondary') 5px, 
-                theme('colors.bg-soft') 5px, 
-                theme('colors.bg-soft') 10px
-            );
+            background-image: repeating-linear-gradient(-45deg,
+                    theme('colors.secondary') 0,
+                    theme('colors.secondary') 5px,
+                    theme('colors.bg-soft') 5px,
+                    theme('colors.bg-soft') 10px);
             border-bottom: 4px solid theme('colors.primary');
         }
     </style>
 </head>
-<body class="bg-bg-soft font-sans text-text-dark"> 
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-xl"> 
-        <div class="max-w-7xl mx-auto flex justify-between items-center h-20 container-padding">
+
+<body class="bg-bg-soft font-sans text-text-dark">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-xl">
+        <div class="w-full flex justify-between items-center h-20 px-4">
+
             <h1 class="text-5xl font-poster text-hotpink tracking-wider flex items-center drop-shadow-md">
                 ✨ AuroraCharm
             </h1>
-            <nav class="hidden md:flex space-x-8 text-lg font-medium"> 
-                <a href="index.html" class="hover:text-hotpink transition">Home</a>
+
+            <nav class="hidden md:flex space-x-8 text-lg font-medium">
+                <a href="index.html" class="text-hotpink font-semibold">Home</a>
                 <a href="shop.html" class="hover:text-hotpink transition">Shop Bracelets</a>
                 <a href="story.html" class="hover:text-hotpink transition">Our Story</a>
                 <a href="contact.html" class="hover:text-hotpink transition">Contact Us</a>
             </nav>
-            <button id="cartButton" class="bg-hotpink text-white px-6 py-3 rounded-full text-lg font-bold shadow-lg hover:bg-pink-600 transition duration-150 transform hover:scale-105">
-                Cart (<span id="cartCount">0</span>) 🛒
-            </button>
+
+            <div class="flex items-center space-x-4">
+                <button id="cartButton"
+                    class="bg-hotpink text-white px-6 py-3 rounded-full text-lg font-bold shadow-lg hover:bg-pink-600 transition duration-150 transform hover:scale-105">
+                    Cart (<span id="cartCount">0</span>) 🛒
+                </button>
+
+                <button id="logoutBtn" class="bg-hotpink text-white px-4 py-3 rounded-full text-lg font-bold shadow-lg 
+                       hover:bg-pink-600 transition duration-150 transform hover:scale-105">
+                    👤
+                </button>
+            </div>
+
         </div>
     </header>
+
 
     <section class="hero-poster-bg text-white py-12 md:py-20 container-padding shadow-2xl">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
             <div class="md:w-1/2 mb-8 md:mb-0 text-center md:text-left">
-                <p class="text-secondary text-3xl font-semibold uppercase tracking-widest mb-4 flex items-center justify-center md:justify-start drop-shadow-md">
+                <p
+                    class="text-secondary text-3xl font-semibold uppercase tracking-widest mb-4 flex items-center justify-center md:justify-start drop-shadow-md">
                     💖 SPARKLE SALE EVENT
                 </p>
                 <h2 class="text-7xl md:text-8xl font-poster leading-none mb-6 drop-shadow-2xl">
@@ -151,38 +170,46 @@
                 <p class="text-white text-xl md:text-xl mb-8 font-semibold max-w-lg mx-auto md:mx-0">
                     Unlock up to **40% off** on our handcrafted charm bracelets this month. It's time to shine bright!
                 </p>
-                <a href="shop.html" class="inline-block bg-accent text-text-dark px-10 py-4 rounded-full text-xl font-poster shadow-2xl transition duration-300 transform hover:scale-110 hover:bg-white border-4 border-white border-opacity-50">
+                <a href="shop.html"
+                    class="inline-block bg-accent text-text-dark px-10 py-4 rounded-full text-xl font-poster shadow-2xl transition duration-300 transform hover:scale-110 hover:bg-white border-4 border-white border-opacity-50">
                     GET YOUR CHARM NOW!
                 </a>
             </div>
-            <div class="md:w-1/3 w-full rounded-3xl shadow-2xl h-64 md:h-80 flex flex-col items-center justify-center border-6 border-white border-opacity-70 overflow-hidden transform rotate-3"> 
-                <img src="images/raccoon.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x256/FF69B4/FFFFFF?text=Cute+Raccoon';"
-                alt="AuroraCharm Raccoon Mascot" class="w-full h-full object-cover rounded-xl" />
+            <div
+                class="md:w-1/3 w-full rounded-3xl shadow-2xl h-64 md:h-80 flex flex-col items-center justify-center border-6 border-white border-opacity-70 overflow-hidden transform rotate-3">
+                <img src="images/raccoon.jpg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/400x256/FF69B4/FFFFFF?text=Cute+Raccoon';"
+                    alt="AuroraCharm Raccoon Mascot" class="w-full h-full object-cover rounded-xl" />
             </div>
         </div>
     </section>
-    
-    <section class="py-14 plaid-bg border-b border-t container-padding shadow-inner" data-aos="fade-up"> 
+
+    <section class="py-14 plaid-bg border-b border-t container-padding shadow-inner" data-aos="fade-up">
         <div class="max-w-7xl mx-auto text-center">
             <h3 class="text-5xl font-poster text-text-dark mb-12 drop-shadow-md">Need Help? Quick Chat Orders!</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6"> 
-                <a href="#" class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#34A853] hover:bg-[#2C8B46]"> 
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                <a href="#"
+                    class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#34A853] hover:bg-[#2C8B46]">
                     <span class="text-4xl">💬</span>
                     <span class="font-semibold text-lg mt-2">LINE Chat</span>
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#1877F2] hover:bg-[#145CBF]"> 
+                <a href="#"
+                    class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#1877F2] hover:bg-[#145CBF]">
                     <span class="text-4xl">📬</span>
                     <span class="font-semibold text-lg mt-2">Messenger</span>
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#E1306C] hover:bg-[#C13584]"> 
+                <a href="#"
+                    class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#E1306C] hover:bg-[#C13584]">
                     <span class="text-4xl">📸</span>
                     <span class="font-semibold text-lg mt-2">Instagram DM</span>
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#EE4D2D] hover:bg-[#D53D20]"> 
+                <a href="#"
+                    class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#EE4D2D] hover:bg-[#D53D20]">
                     <span class="text-4xl">🛍️</span>
                     <span class="font-semibold text-lg mt-2">Shopee Shop</span>
                 </a>
-                <a href="#" class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#000000] hover:bg-[#333333]"> 
+                <a href="#"
+                    class="flex flex-col items-center justify-center p-4 rounded-3xl text-white shadow-xl transition transform hover:scale-105 bg-[#000000] hover:bg-[#333333]">
                     <span class="text-4xl">🎵</span>
                     <span class="font-semibold text-lg mt-2">TikTok Shop</span>
                 </a>
@@ -194,44 +221,64 @@
         <div class="max-w-7xl mx-auto">
             <h3 class="text-5xl font-poster text-text-dark mb-12 drop-shadow-md">Our Charm Showcase</h3>
 
-            <div id="productContainer" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"> 
-                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50" data-product-id="P1" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-br from-primary to-accent/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">⭐</div> 
+            <div id="productContainer" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50"
+                    data-product-id="P1" data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="h-48 bg-gradient-to-br from-primary to-accent/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">
+                        ⭐</div>
                     <h4 class="font-poster text-xl mb-2 text-hotpink">Celestial Dreamer</h4>
                     <p class="text-sm text-text-dark/80">A mix of stars, moons, and stardust wishes.</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-2xl font-extrabold text-text-dark">$29.99</span>
-                        <button class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add +</button>
+                        <button
+                            class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add
+                            +</button>
                     </div>
                 </div>
 
-                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50" data-product-id="P2" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-gradient-to-br from-secondary to-hotpink/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">🍓</div>
+                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50"
+                    data-product-id="P2" data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="h-48 bg-gradient-to-br from-secondary to-hotpink/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">
+                        🍓</div>
                     <h4 class="font-poster text-xl mb-2 text-hotpink">Sweet Treat</h4>
                     <p class="text-sm text-text-dark/80">Berries, cakes, and sprinkles for your sweet tooth.</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-2xl font-extrabold text-text-dark">$35.00</span>
-                        <button class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add +</button>
+                        <button
+                            class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add
+                            +</button>
                     </div>
                 </div>
 
-                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50" data-product-id="P3" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 bg-gradient-to-br from-accent to-primary/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">🐾</div>
+                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50"
+                    data-product-id="P3" data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="h-48 bg-gradient-to-br from-accent to-primary/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">
+                        🐾</div>
                     <h4 class="font-poster text-xl mb-2 text-hotpink">Pet Lover</h4>
                     <p class="text-sm text-text-dark/80">Paws, bones, and whiskers for your furry friends.</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-2xl font-extrabold text-text-dark">$24.50</span>
-                        <button class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add +</button>
+                        <button
+                            class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add
+                            +</button>
                     </div>
                 </div>
 
-                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50" data-product-id="P4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="h-48 bg-gradient-to-br from-hotpink to-secondary/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">🦄</div>
+                <div class="p-4 bg-white rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-white/50"
+                    data-product-id="P4" data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="h-48 bg-gradient-to-br from-hotpink to-secondary/50 rounded-xl mb-4 flex items-center justify-center text-6xl text-white shadow-inner">
+                        🦄</div>
                     <h4 class="font-poster text-xl mb-2 text-hotpink">Fantasy Land</h4>
                     <p class="text-sm text-text-dark/80">Unicorns, glitter, and rainbows from a magical realm.</p>
                     <div class="flex justify-between items-center mt-4">
                         <span class="text-2xl font-extrabold text-text-dark">$45.99</span>
-                        <button class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add +</button>
+                        <button
+                            class="add-to-cart-btn bg-hotpink text-white text-base px-4 py-2 rounded-full hover:bg-pink-600 transition duration-200 transform hover:scale-105 shadow-md">Add
+                            +</button>
                     </div>
                 </div>
 
@@ -240,12 +287,16 @@
     </section>
 
     <section class="py-20 plaid-bg container-padding" data-aos="fade-up">
-        <div class="max-w-3xl mx-auto text-center p-10 rounded-3xl bg-white shadow-2xl border-6 border-accent/50"> 
+        <div class="max-w-3xl mx-auto text-center p-10 rounded-3xl bg-white shadow-2xl border-6 border-accent/50">
             <h3 class="text-4xl font-poster text-hotpink mb-6 drop-shadow-md">Join the VIP Charm Club! ✨</h3>
-            <p class="text-xl text-text-dark/90 mb-8 font-semibold">Get **15% off** your first order and exclusive access to new sparkles before anyone else!</p>
+            <p class="text-xl text-text-dark/90 mb-8 font-semibold">Get **15% off** your first order and exclusive
+                access to new sparkles before anyone else!</p>
             <form id="newsletterForm" class="flex flex-col sm:flex-row gap-5 justify-center">
-                <input type="email" placeholder="Enter your email address..." class="flex-grow p-4 rounded-full border-3 border-primary focus:border-hotpink focus:ring-hotpink outline-none shadow-inner text-lg" required>
-                <button type="submit" class="bg-hotpink text-white px-8 py-4 rounded-full font-poster text-2xl shadow-2xl hover:bg-pink-600 transition duration-300 transform hover:-translate-y-1">
+                <input type="email" placeholder="Enter your email address..."
+                    class="flex-grow p-4 rounded-full border-3 border-primary focus:border-hotpink focus:ring-hotpink outline-none shadow-inner text-lg"
+                    required>
+                <button type="submit"
+                    class="bg-hotpink text-white px-8 py-4 rounded-full font-poster text-2xl shadow-2xl hover:bg-pink-600 transition duration-300 transform hover:-translate-y-1">
                     Sign Me Up! 💌
                 </button>
             </form>
@@ -256,47 +307,71 @@
         <div class="max-w-7xl mx-auto">
             <h3 class="text-5xl font-poster text-text-dark mb-12 drop-shadow-md">Hear the Joyful Feedback!</h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10"> 
-                <div class="p-6 bg-white rounded-3xl shadow-xl border-6 border-secondary" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-6 bg-white rounded-3xl shadow-xl border-6 border-secondary" data-aos="fade-up"
+                    data-aos-delay="100">
                     <div class="flex items-start mb-5">
                         <span class="text-5xl mr-4">👑</span>
                         <div>
                             <p class="font-bold text-xl text-text-dark">Jenna S.</p>
                             <div class="flex text-accent text-xl">
-                                <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span>
+                                <span class="material-icons">star</span><span class="material-icons">star</span><span
+                                    class="material-icons">star</span><span class="material-icons">star</span><span
+                                    class="material-icons">star</span>
                             </div>
                         </div>
                     </div>
-                    <p class="italic text-gray-700 mb-5 text-lg leading-relaxed font-sans">"Absolutely gorgeous bracelet! The charms are even sparklier in person. It arrived quickly and was packaged so cutely. I'm obsessed!"</p>
-                    <img src="images/review1.jpg" onerror="this.onerror=null; this.src='https://placehold.co/120x120/FFD700/FFFFFF?text=Review+1';" class="w-32 h-32 object-cover rounded-full mt-6 shadow-xl border-4 border-white" alt="Customer Review Photo showing bracelet">
+                    <p class="italic text-gray-700 mb-5 text-lg leading-relaxed font-sans">"Absolutely gorgeous
+                        bracelet! The charms are even sparklier in person. It arrived quickly and was packaged so
+                        cutely. I'm obsessed!"</p>
+                    <img src="images/review1.jpg"
+                        onerror="this.onerror=null; this.src='https://placehold.co/120x120/FFD700/FFFFFF?text=Review+1';"
+                        class="w-32 h-32 object-cover rounded-full mt-6 shadow-xl border-4 border-white"
+                        alt="Customer Review Photo showing bracelet">
                 </div>
 
-                <div class="p-6 bg-white rounded-3xl shadow-xl border-6 border-primary" data-aos="fade-up" data-aos-delay="300">
+                <div class="p-6 bg-white rounded-3xl shadow-xl border-6 border-primary" data-aos="fade-up"
+                    data-aos-delay="300">
                     <div class="flex items-start mb-5">
                         <span class="text-5xl mr-4">🎀</span>
                         <div>
                             <p class="font-bold text-xl text-text-dark">Kyle R.</p>
                             <div class="flex text-accent text-xl">
-                                <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons text-gray-400">star</span>
+                                <span class="material-icons">star</span><span class="material-icons">star</span><span
+                                    class="material-icons">star</span><span class="material-icons">star</span><span
+                                    class="material-icons text-gray-400">star</span>
                             </div>
                         </div>
                     </div>
-                    <p class="italic text-gray-700 mb-5 text-lg leading-relaxed font-sans">"Got this as a gift for my best friend. The engraving detail was perfect! Customer support was helpful in choosing the right size."</p>
-                    <img src="images/review2.jpg" onerror="this.onerror=null; this.src='https://placehold.co/120x120/A78BFA/FFFFFF?text=Review+2';" class="w-32 h-32 object-cover rounded-full mt-6 shadow-xl border-4 border-white" alt="Customer Review Photo showing bracelet">
+                    <p class="italic text-gray-700 mb-5 text-lg leading-relaxed font-sans">"Got this as a gift for my
+                        best friend. The engraving detail was perfect! Customer support was helpful in choosing the
+                        right size."</p>
+                    <img src="images/review2.jpg"
+                        onerror="this.onerror=null; this.src='https://placehold.co/120x120/A78BFA/FFFFFF?text=Review+2';"
+                        class="w-32 h-32 object-cover rounded-full mt-6 shadow-xl border-4 border-white"
+                        alt="Customer Review Photo showing bracelet">
                 </div>
 
-                <div class="p-6 bg-white rounded-3xl shadow-xl border-6 border-secondary" data-aos="fade-up" data-aos-delay="500">
+                <div class="p-6 bg-white rounded-3xl shadow-xl border-6 border-secondary" data-aos="fade-up"
+                    data-aos-delay="500">
                     <div class="flex items-start mb-5">
                         <span class="text-5xl mr-4">🌸</span>
                         <div>
                             <p class="font-bold text-xl text-text-dark">Chloe D.</p>
                             <div class="flex text-accent text-xl">
-                                <span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span><span class="material-icons">star</span>
+                                <span class="material-icons">star</span><span class="material-icons">star</span><span
+                                    class="material-icons">star</span><span class="material-icons">star</span><span
+                                    class="material-icons">star</span>
                             </div>
                         </div>
                     </div>
-                    <p class="italic text-gray-700 mb-5 text-lg leading-relaxed font-sans">"The store is so reliable! I love the **free jewelry cloth** included, and the secure payment makes shopping a breeze. 5 stars!"</p>
-                    <img src="images/review3.jpg" onerror="this.onerror=null; this.src='https://placehold.co/120x120/FDBA74/FFFFFF?text=Review+3';" class="w-32 h-32 object-cover rounded-full mt-6 shadow-xl border-4 border-white" alt="Customer Review Photo showing bracelet">
+                    <p class="italic text-gray-700 mb-5 text-lg leading-relaxed font-sans">"The store is so reliable! I
+                        love the **free jewelry cloth** included, and the secure payment makes shopping a breeze. 5
+                        stars!"</p>
+                    <img src="images/review3.jpg"
+                        onerror="this.onerror=null; this.src='https://placehold.co/120x120/FDBA74/FFFFFF?text=Review+3';"
+                        class="w-32 h-32 object-cover rounded-full mt-6 shadow-xl border-4 border-white"
+                        alt="Customer Review Photo showing bracelet">
                 </div>
             </div>
         </div>
@@ -306,20 +381,26 @@
         <div class="max-w-7xl mx-auto">
             <h3 class="text-5xl font-poster text-text-dark mb-12 drop-shadow-md">Why Choose AuroraCharm?</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-                <div class="p-8 bg-white rounded-2xl shadow-xl border-4 border-primary" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-8 bg-white rounded-2xl shadow-xl border-4 border-primary" data-aos="fade-up"
+                    data-aos-delay="100">
                     <span class="text-6xl mx-auto mb-5 block">💖</span>
                     <h4 class="text-2xl font-poster mb-3 text-hotpink">Jewelry Care Guarantee</h4>
-                    <p class="text-text-dark/90 text-lg">All bracelets come with a **6-month sparkle warranty** and a free polishing cloth to keep them shining!</p>
+                    <p class="text-text-dark/90 text-lg">All bracelets come with a **6-month sparkle warranty** and a
+                        free polishing cloth to keep them shining!</p>
                 </div>
-                <div class="p-8 bg-white rounded-2xl shadow-xl border-4 border-secondary" data-aos="fade-up" data-aos-delay="300">
+                <div class="p-8 bg-white rounded-2xl shadow-xl border-4 border-secondary" data-aos="fade-up"
+                    data-aos-delay="300">
                     <span class="text-6xl mx-auto mb-5 block">📦</span>
                     <h4 class="text-2xl font-poster mb-3 text-hotpink">Free Sparkly Delivery</h4>
-                    <p class="text-text-dark/90 text-lg">We ship your treasures **free** on all orders over $40, packaged with extra love and charm.</p>
+                    <p class="text-text-dark/90 text-lg">We ship your treasures **free** on all orders over $40,
+                        packaged with extra love and charm.</p>
                 </div>
-                <div class="p-8 bg-white rounded-2xl shadow-xl border-4 border-hotpink" data-aos="fade-up" data-aos-delay="500">
+                <div class="p-8 bg-white rounded-2xl shadow-xl border-4 border-hotpink" data-aos="fade-up"
+                    data-aos-delay="500">
                     <span class="text-6xl mx-auto mb-5 block">🛡️</span>
                     <h4 class="text-2xl font-poster mb-3 text-hotpink">Safe & Secure Payments</h4>
-                    <p class="text-text-dark/90 text-lg">Your information is protected by the strongest encryption, shop without a worry, always sparkly secure.</p>
+                    <p class="text-text-dark/90 text-lg">Your information is protected by the strongest encryption, shop
+                        without a worry, always sparkly secure.</p>
                 </div>
             </div>
         </div>
@@ -328,9 +409,11 @@
     <footer class="bg-gray-900 text-white py-10 mt-16">
         <div class="max-w-7xl mx-auto text-center container-padding">
             <h3 class="text-4xl font-poster text-accent mb-4 drop-shadow-md">AuroraCharm</h3>
-            <p class="text-gray-300">&copy; 2025 AuroraCharm. Where every wrist tells a story. Find your sparkle today!</p>
+            <p class="text-gray-300">&copy; 2025 AuroraCharm. Where every wrist tells a story. Find your sparkle today!
+            </p>
             <div class="mt-4 text-base text-gray-400 space-x-6">
-                <a href="policy.html" class="hover:text-hotpink transition duration-150 font-semibold">Privacy Policy</a>
+                <a href="policy.html" class="hover:text-hotpink transition duration-150 font-semibold">Privacy
+                    Policy</a>
                 <span class="text-gray-600">|</span>
                 <a href="tos.html" class="hover:text-hotpink transition duration-150 font-semibold">Terms of Service</a>
                 <span class="text-gray-600">|</span>
@@ -338,6 +421,26 @@
             </div>
         </div>
     </footer>
+
+    <div id="logoutModal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle"
+        style="display:none;position:fixed;inset:0;z-index:60;align-items:center;justify-content:center;">
+        <div class="backdrop" style="position:absolute;inset:0;background:rgba(10,10,10,0.5);" data-dismiss="modal">
+        </div>
+        <div class="panel"
+            style="position:relative;z-index:2;background:#fff;padding:1.25rem;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,0.25);width:90%;max-width:420px;text-align:center;">
+            <h3 id="logoutTitle" style="font-size:1.25rem;font-weight:700;margin-bottom:.5rem;color:#1f1f1f;">Sign out
+                of AuroraCharm (╥﹏╥)?</h3>
+            <p style="color:#4b5563;font-size:.95rem;margin-bottom:1rem;">You will be returned to the sign-in page. Your
+                cart will remain saved locally unless you clear it.</p>
+            <div style="display:flex;gap:.5rem;justify-content:center;">
+                <button id="logoutCancel" class="cancel"
+                    style="padding:.5rem 1rem;border-radius:999px;background:#f3f4f6;border:none;">Cancel</button>
+                <button id="logoutConfirm" class="confirm"
+                    style="padding:.5rem 1rem;border-radius:999px;background:linear-gradient(90deg,#ff6f9a,#ffd740);color:#4a148c;border:none;font-weight:700;">Sign
+                    out</button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Helper function to show a friendly, custom alert 
@@ -350,9 +453,9 @@
             // Styling for the alert box, using Tailwind classes
             alertDiv.className = 'fixed top-6 left-1/2 transform -translate-x-1/2 bg-hotpink text-white px-8 py-4 rounded-full shadow-2xl z-[9999] opacity-0 transition-opacity duration-500 ease-out font-poster text-xl text-center border-4 border-white';
             alertDiv.textContent = message;
-            
+
             document.body.appendChild(alertDiv);
-            
+
             // Show the alert 
             setTimeout(() => {
                 alertDiv.style.opacity = '1';
@@ -373,15 +476,15 @@
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
                     event.preventDefault();
-                    
+
                     // Get product info 
-                    const productCard = event.target.closest('.p-4'); 
+                    const productCard = event.target.closest('.p-4');
                     const productName = productCard ? productCard.querySelector('h4').textContent : 'A product';
 
                     // Update local cart count (Placeholder logic)
                     cartItems++;
                     cartCountElement.textContent = cartItems;
-                    
+
                     alertUser(`"${productName}" added to cart! Total items: ${cartItems} 🛍️`);
                 });
             });
@@ -392,14 +495,77 @@
                 newsletterForm.addEventListener('submit', (event) => {
                     event.preventDefault();
                     const emailInput = newsletterForm.querySelector('input[type="email"]').value;
-                    
+
                     // In a real application, you would send this data to a server/API.
-                    
+
                     alertUser(`Welcome, VIP! Check ${emailInput} for your 15% off code! 💖`);
                     newsletterForm.reset();
                 });
             }
         });
+
+        // Toggle modal helpers
+        const logoutBtn = document.getElementById('logoutBtn');
+        const logoutModal = document.getElementById('logoutModal');
+        const logoutCancel = document.getElementById('logoutCancel');
+        const logoutConfirm = document.getElementById('logoutConfirm');
+
+        function openLogoutModal() {
+            if (!logoutModal) return;
+            logoutModal.style.display = 'flex';
+            // focus confirm for accessibility
+            logoutConfirm && logoutConfirm.focus();
+        }
+        function closeLogoutModal() {
+            if (!logoutModal) return;
+            logoutModal.style.display = 'none';
+        }
+
+        // show logout button if user is signed in
+        (function showLogoutIfSigned() {
+            try {
+                const u = localStorage.getItem('auroracharm_user');
+                if (u) {
+                    const btn = document.getElementById('logoutBtn');
+                    if (btn) btn.classList.remove('hidden');
+                }
+            } catch (e) { /* ignore */ }
+        })();
+
+        // Attach listeners (guard for pages without the elements)
+        if (logoutBtn) logoutBtn.addEventListener('click', openLogoutModal);
+        if (logoutCancel) logoutCancel.addEventListener('click', closeLogoutModal);
+        const backdrop = logoutModal && logoutModal.querySelector('.backdrop');
+        if (backdrop) backdrop.addEventListener('click', closeLogoutModal);
+
+        // Confirm logout: clear session and redirect to auth/sign-in page
+        if (logoutConfirm) logoutConfirm.addEventListener('click', () => {
+            try {
+                // Remove the session flag
+                localStorage.removeItem('auroracharm_user');
+
+                // OPTIONAL: clear per-browser cart (uncomment if desired)
+                // localStorage.removeItem('auroracharm_cart_count');
+                // localStorage.removeItem('auroracharm_cart');
+
+                // small UX toast can go here if you have one; then redirect
+            } catch (e) {
+                // ignore
+            } finally {
+                // Close modal then redirect
+                closeLogoutModal();
+                // short delay so user sees modal closing
+                setTimeout(() => { window.location.href = 'auth.html'; }, 200);
+            }
+        });
+
+        // accessibility: close modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && logoutModal && logoutModal.style.display === 'flex') {
+                closeLogoutModal();
+            }
+        });
     </script>
 </body>
+
 </html>
